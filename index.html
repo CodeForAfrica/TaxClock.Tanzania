@@ -1,0 +1,128 @@
+---
+layout: home
+---
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-6 text-center">
+      <img src="img/logo.png" class="logo" />
+    </div>
+    
+    <div class="col-md-6" id="clock-area">
+      <div id="holder">
+        <div id="canvas"></div>
+      </div> 
+    </div>
+    
+    <div class="clearfix visible-xs visible-sm hidden-md"></div>
+    
+    <div class="col-md-6 text-center">
+      <div class="hidden-xs hidden-sm" style="height:10px;"></div>
+      
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-6">
+          <div class="tc-box-clear">
+            <p>If your salary is<br/><strong>TZS.<span id="salary"></span></strong> a month<br/>it means you earn<br/><strong>TZS.<span id="hourly"></span> per</strong> hour<span id="year" style="display:none;">2016</span>.</p>
+          </div>
+        </div>
+        <div class="visible-xs" style="min-height: 20px;"></div>
+        <div class="col-sm-6">
+          <div class="tc-box-clear">
+            <p>You would pay <br/><strong>TZS.<span id="iSum"></span></strong> a month<br/>in taxes, which is<br/><strong>TZS.<span id="iDaily"></span></strong> a day<sup>*</sup>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 0 35px;">
+        <p class="tc-text-time">
+          That's <strong><span id="iHours"> <span style="font-weight: normal;">and</span> </span></strong> per day<br/>that you spend working for the Kenyan Governement.
+          <!-- <br/> -->
+          <!-- Compared to <strong>x hours and xx minutes</strong> in South Africa and <strong>x hours and xx minutes</strong> in Nigeria. -->
+        </p>
+
+        <div class="hidden-xs hidden-sm" style="height:15px;"></div>
+
+        <div class="tc-box tc-box-red">
+          <h3>DID YOU KNOW?</h3>
+          <p>Time is money.<br/>So, paying your tax means that you are actually giving government your time, or labour.<br/>This project helps you calculate exactly how much time you spend working for  the government.</p>
+        </div>
+
+        <div class="tc-box tc-box-blue">
+          <div class="tc-box-arrow-right hidden-xs hidden-sm"></div>
+          <div class="tc-box-arrow-bottom visible-xs visible-sm"></div>
+          <h3>
+            ENTER YOUR SALARY
+          </h3>
+          <p>Find out where your money is going.</p>
+        </div>
+      </div>
+
+    </div> <!-- /.col-sm-6 -->
+
+  </div> <!-- /.row -->
+</div> <!-- /.container -->
+
+<div style="background-color: #fff; color: #0D68A8; margin-top: -185px; min-height: 300px; padding-bottom: 40px;">
+  <div class="container">
+    <div class="hidden-xs hidden-sm" style="height:80px;"></div>
+    <div class="visible-xs visible-sm" style="height:240px;"></div>
+    <div class="row">
+      <div class="col-md-6" id="schedule-area">
+        <div class="tc-box tc-box-blue text-center">
+          <h4>What is your monthly income<sup>*</sup> (before tax)?</h4>
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">TZS</span>
+            <input id="income-input" class="income form-control" type="text" name="income"  aria-label="Monthly income before tax">
+          </div>
+          <p><small><sup>*</sup> This should be your income before tax but after deductions such as pension and health insurance.</small></p>
+        </div>
+        <div class="tc-box tc-box-white" id="clock-digital">
+          <div class="container-fluid row">
+            <div class="col-xs-5 col-sm-5 col-md-4 tc-bg-blue">
+              Right now
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-8 tc-bg-lightblue">
+              You're working for
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-5 col-sm-5 col-md-4 tc-text-blue" id="clock-now">
+              00:00
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-8 tc-text-lightblue" id="clock-item">
+              Working for yourself
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-5 col-sm-5 col-md-4 tc-bg-blue">
+              Next Up
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-8 tc-bg-lightblue" id="clock-next">
+              End of the workday
+            </div>
+          </div>
+        </div> <!-- /#clock-digital -->
+
+        <div id="dayplanner">
+          <div class="tc-box tc-box-black text-center">
+            <h4>Your work schedule today would look like this:</h4>
+          </div>
+          
+          <div id="output-dayplanner"></div>
+	  
+          <div id="calendar-download" class="text-center">
+            <p>Install a daily reminder of when you start working for yourself:</p>
+            <p><a href="javascript:downloadICS()" class="btn btn-default">Install Calendar ICS</a></p>
+          </div> 
+        </div>
+	
+      </div> <!-- /.col-md-6 #schedule-area -->
+      <div class="col-md-6" id="stories-area">
+        <div class="hidden-xs hidden-sm visible-safari" style="height:110px; display: none;"></div>
+        <h1 class="text-center">. . .</h1>
+
+        {% include stories.html %}
+      </div>
+    </div>  <!-- /.row -->
+  </div> <!-- /.container -->
+</div>
+

@@ -1,0 +1,457 @@
+@charset "utf-8";
+
+// Bootstrap variable overrides
+
+//== Colors
+
+$teal: #088;
+$beige: #f0ead6;
+$gold: #EEC900;
+$gold-dark: darken($gold, 20%);
+$red: #ad0000;
+$yellow: #fcdc23;
+$orange: #f7941d;
+$blue: #0054a6;
+
+$black: #000;
+$white: #fff;
+
+$gray-base: #000 !default;
+$gray-darker: lighten($gray-base, 13.5%) !default;
+$gray-dark: lighten($gray-base, 20%) !default;
+$gray: lighten($gray-base, 33.5%) !default;
+$gray-light: lighten($gray-base, 46.7%) !default;
+$gray-lighter: lighten($gray-base, 93.5%) !default;
+
+//== Scaffolding
+$body-bg: $beige !default;
+$text-color: $black !default;
+
+//== Typography
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+$font-family-sans-serif: "Montserrat", Helvetica, Arial, sans-serif !default;
+
+//@import url(https://fonts.googleapis.com/css?family=Lora:700,700italic,400italic,400);
+@import url(https://fonts.googleapis.com/css?family=Bitter:400,400italic,700);
+$font-family-serif: "Bitter", serif !default;
+
+$font-family-base: $font-family-sans-serif !default;
+
+$font-size-base: 16px !default;
+$line-height-base: 1 !default;
+
+$font-size-h1: floor(($font-size-base * 2.6)) !default;
+$font-size-h2: floor(($font-size-base * 2.15)) !default;
+$font-size-h3: ceil(($font-size-base * 1.7)) !default;
+$font-size-h4: ceil(($font-size-base * 1.25)) !default;
+$font-size-h5: $font-size-base !default;
+$font-size-h6: 12px;
+
+//== Buttons
+$btn-font-weight: bold !default;
+
+$btn-default-color: $white !default;
+$btn-default-bg: $teal !default;
+$btn-default-border: #ccc !default;
+
+//== Jumbotron
+$jumbotron-bg: $teal !default;
+$jumbotron-padding: 40px !default;
+
+//== Tooltips
+
+$tooltip-max-width: 300px !default;
+$tooltip-color: $black !default;
+$tooltip-bg: $yellow !default;
+$tooltip-opacity: 1 !default;
+
+//=====
+
+// Import Bootstrap SASS
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+//=====
+
+// Custom styling
+
+//== Scaffolding
+
+html, body {
+	height: 100%;
+}
+
+strong {
+	font-weight: 900;
+}
+
+body {
+	background-image: url("bg-linedpaper.png");
+}
+
+//== Embed Link
+.embed-link {
+    display: none;
+    position: absolute;
+    right: 0px;
+    padding: 5px
+}
+.embed-link a {
+    color: #e6e6e6;
+}
+body:hover .embed-link.allowed {
+    display: block
+}
+
+//== Jumbotron
+.jumbotron {
+	background-image: url('bg-diagonal.png');
+	text-align: center;
+	border-bottom: solid 5px rgba(0,0,0,0.1);
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	.container {
+		background-image: url('gold-clock.png');
+		background-repeat: no-repeat;
+		background-position: 50% 65%;
+		padding-top: $jumbotron-padding;
+		padding-bottom: $jumbotron-padding;
+	}
+	h1 {
+		color: $white;
+		font-size: 80px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin: 0;
+	}
+	h2 {
+		color: $gold;
+		font-size: 34px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-top: 0;
+	}
+	h3 {
+		margin-top: 15px;
+		color: $white;;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 160%;
+		.h3-inner {
+			display: inline-block;
+			background-color: rgba(0,0,0,0.5);
+			padding: 2px 5px;
+		}
+	}
+}
+
+//== Input
+
+#input-wrapper {
+	margin: 20px 0;
+	padding: 10px;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	background-color: rgba(255,255,255,0.9);
+}
+
+#input {
+	border: solid 3px $teal;
+	padding: 15px;
+	h4 {
+		text-align: left;
+		font-size: 18px;
+		letter-spacing: 1px;
+		margin-top: 0;
+		line-height: 1.4;
+		i {
+			color: $gold-dark;
+		}
+	}
+	.icon {
+		text-align: center;
+	}
+}
+
+//== Output
+
+#output-wrapper {
+	display: none;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	background-color: rgba(255,255,255,0.9);
+	padding: 10px;
+	margin-bottom: 20px;
+	h4 {
+		font-family: $font-family-serif;
+		font-size: 15px;
+		font-weight: bold;
+		color: $teal;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+}
+
+#clock {
+	margin-bottom: 15px;
+	border: solid 1px $teal;
+	padding: 15px;
+}
+
+#output-clock{
+	text-align: center;
+	#right-now {
+		color: $gold-dark;
+		font-size: 17px;
+		margin-top: 0;
+	}
+	#clock-now {
+		font-size: 48px;
+		text-transform: uppercase;
+	}
+	#working-on {
+		margin-bottom: 3px;
+	}
+	#clock-item {
+		font-size: 24px;
+		margin-bottom: 15px;
+	}
+	#clock-next-wrapper {
+		h4, #clock-next {
+			display: inline-block;
+			font-size: 12px;
+		}
+		h4 {
+			color: $gray-light;
+		}
+		#clock-next {
+			padding: 5px;
+			background-color: $gray-light;
+			color: $white;
+		}
+	}
+}
+
+#dayplanner {
+	h4 {
+		margin-top: 15px;
+		margin-bottom: 10px;
+	}
+}
+
+#output-dayplanner {
+	border: solid 2px $gray-dark;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.explanation-wrapper {
+	margin-top: 15px;
+	padding: 10px;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	background-color: rgba(255,255,255,0.9);
+}
+
+.explanation {
+	background-color: $white;
+	background-color: rgba(255,255,255,0.6);
+	font-family: $font-family-serif;
+	color: $gold-dark;
+	padding: 13px;
+	line-height: 1.4;
+	border: solid 2px $gold;
+	text-align: justify;
+	.icon {
+		text-align: center;
+	}
+}
+
+.item {
+	position: relative;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	border-bottom: solid 1px $gray-light;
+	padding: 10px;
+	.item-starttime-wrapper {
+		position: absolute;
+		left: 7px;
+		top: 12px;
+		width: 75px;
+		z-index: 10;
+	}
+	.item-starttime {
+		font-weight: bold;
+		font-size: 12px;
+		padding: 2px 4px;
+		background-color: $teal;
+		color: $white;
+		width: 70px;
+		text-align: center;
+	}
+	.item-details {
+		margin-left: 75px;
+		padding-right: 70px;
+		position: relative;
+		z-index: 10;
+	}
+	.item-name {
+		display: inline;
+		font-size: 20px;
+		margin-right: 10px;
+	}
+	.item-duration {
+		display: inline-block;
+		color: $gold-dark;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	&:last-child {
+		border-bottom: 0;
+	}
+	&#start, &#end, &#instruction {
+		color: $gray-dark;
+		color: rgba(0,0,0,0.7);
+		background-color: rgba(0,0,0,0.1);
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 80%;
+		letter-spacing: 2px;
+	}
+	&#start {
+		background-color: $yellow;
+	}
+	&#end {
+		background-color: $blue;
+		color: $white;
+		color: rgba(255,255,255,0.7);
+	}
+}
+
+.item-small .item-name{
+	font-size: 14px;
+}
+
+.explanation-icon {
+	display: inline-block;
+	background-color: $yellow;
+	font-size: 14px;
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	line-height: 16px;
+	text-align: center;
+	border-radius: 9px;
+	border: solid 2px transparent;
+	cursor: default;
+	&:hover {
+		color: $black;
+		background-color: transparent;
+		border: solid 2px $yellow;
+	}
+}
+
+.item-explanation {
+	font-family: $font-family-serif;
+	font-size: 13px;
+	line-height: 1.4;
+	margin-top: 5px;
+	.what-is-this {
+		display: inline-block;
+		border: solid 2px $yellow;
+		font-size: 14px;
+		padding: 1px 2px;
+		line-height: 12px;
+		margin-right: 5px;
+		font-family: $font-family-sans-serif;
+		width: 18px;
+		height: 18px;
+		border-radius: 9px;
+		text-align: center;
+	}
+}
+
+.tooltip-inner{
+	text-align: left;
+	padding: 10px;
+	font-family: $font-family-serif;
+	font-size: 13px;
+	line-height: 1.2;
+}
+
+#calendar-download {
+	padding-top: 10px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 1.2;
+	.btn {
+		font-size: 12px;
+		border-radius: 10px;
+		border-width: 0;
+		line-height: 1;
+	}
+}
+//== 'Now' line
+
+#now-line {
+	position: absolute;
+	z-index: 5;
+	border-bottom: dotted 2px rgba(255,0,0,0.4);
+	height: 9px;
+	width: 100%;
+	left: 0;
+	text-align: right;
+	span {
+		display: inline-block;
+		margin-right: 10px;
+		font-weight: bold;
+		font-size: 9px;
+		padding: 3px;
+		background-color: $red;
+		color: $white;
+		text-transform: uppercase;
+	}
+
+}
+
+//== Social Media
+#social-media{
+	display: none;
+	min-height: 22.5px;
+	margin-top: 15px;
+	text-align: right;
+}
+
+body.standalone #social-media {
+	display: block;
+}
+
+//== Footnotes
+.footnotes {
+	color: $gray-dark;
+	margin-bottom: 15px;
+	h6 {
+		font-size: 11px;
+		margin-top: 0;
+	}
+}
+
+//== Footer
+
+.footer {
+	background-color: $white;
+	color: $gray;
+	font-size: 12px;
+	padding: 15px;
+	line-height: 1.2;
+	.credits {
+		img {
+		max-height: 40px;
+		padding: 5px;
+		margin: 5px;
+		background-color: $white;
+		border-radius: 5px;
+		}
+	}
+}
