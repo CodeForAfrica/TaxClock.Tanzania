@@ -62,7 +62,7 @@ layout: home
 
   </div> <!-- /.row -->
 </div> <!-- /.container -->
-{% comment %}
+
 <div style="background-color: #fff; color: #0D68A8; margin-top: -185px; min-height: 300px; padding-bottom: 40px;">
   <div class="container">
     <div class="hidden-xs hidden-sm" style="height:80px;"></div>
@@ -102,7 +102,7 @@ layout: home
           </div>
         </div> <!-- /#clock-digital -->
 
-        <div id="dayplanner">
+        {% comment %}<div id="dayplanner">
           <div class="tc-box tc-box-black text-center">
             <h4>Your work schedule today would look like this:</h4>
           </div>
@@ -113,7 +113,7 @@ layout: home
             <p>Install a daily reminder of when you start working for yourself:</p>
             <p><a href="javascript:downloadICS()" class="btn btn-default">Install Calendar ICS</a></p>
           </div> 
-        </div>
+        </div>{% endcomment %}
 	
       </div> <!-- /.col-md-6 #schedule-area -->
       <div class="col-md-6" id="stories-area">
@@ -124,5 +124,5 @@ layout: home
       </div>
     </div>  <!-- /.row -->
   </div> <!-- /.container -->
-</div>{% endcomment %}
+</div>
 
