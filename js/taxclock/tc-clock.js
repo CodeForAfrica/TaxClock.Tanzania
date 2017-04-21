@@ -248,7 +248,7 @@ function analyzeData(data, income){
      // var daily = Math.round(taxman_fraction * 21 * 8);
       var aday = taxman_fraction * 8;
 
-      clocked.writeto("Kenya Government",formatHoursFlat(aday));
+      clocked.writeto("Tanzania Government",formatHoursFlat(aday));
       
 }
 

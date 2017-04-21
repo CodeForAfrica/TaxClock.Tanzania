@@ -222,7 +222,7 @@ function analyzeData(data, income){
       var daily = Math.round((sum / 20));
       var aday = daily / hourly;
 
-      clocked.writeto("Kenya Government",formatHoursFlat(aday));
+      clocked.writeto("Tanzania Government",formatHoursFlat(aday));
       
 }
 
