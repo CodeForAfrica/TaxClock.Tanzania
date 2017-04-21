@@ -113,16 +113,12 @@ var IncomeCalculator = function() {
 
   this.incomeTax = function(info) {
     var gross_income_tax = 0;
-    var band = _.find(this.TAX_TABLE, function(b) {
-      return (info.income >= b.threshold) && (info.income <= b.limit);
-    });
 
-    if (band) {
-      gross_income_tax = band.baseAmount + (band.marginalRate * (info.income - band.threshold));
-      gross_income_tax = gross_income_tax - this.PRIMARY_REBATE;
+    if(info.income <=170000){
+      gross_income_tax = 0;
+    }else if(info.income > 170000 && info.income <=360000){
+      gross_income_tax = 0.09 * (info.income - 170000)
     }
-
-    if (gross_income_tax < 0) gross_income_tax = 0;
 
     return gross_income_tax;
   };
