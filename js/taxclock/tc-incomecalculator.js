@@ -112,15 +112,9 @@ var IncomeCalculator = function() {
   };
 
   this.incomeTax = function(info) {
-    var gross_income_tax = 0;
+   
 
-    if(info.income <=170000){
-      gross_income_tax = 0;
-    }else if(info.income > 170000 && info.income <=360000){
-      gross_income_tax = 0.09 * (info.income - 170000)
-    }
-
-    return gross_income_tax;
+    return gross_income_tax = info.income * 0.5;
   };
 
   this.vatTax = function(info) {
