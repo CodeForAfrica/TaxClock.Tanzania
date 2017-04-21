@@ -108,7 +108,7 @@ var output;
 
 function incomeChange() {
 	var income = parseFloat($('input[name="income"]').val());
-
+	alert(income);
 	var calc = new IncomeCalculator();
 
 	output = calc.calculateIncomeBreakdown(income);
