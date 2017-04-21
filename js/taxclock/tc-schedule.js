@@ -108,10 +108,12 @@ var output;
 
 function incomeChange() {
 	var income = parseFloat($('input[name="income"]').val());
-	alert(income);
 	var calc = new IncomeCalculator();
 
 	output = calc.calculateIncomeBreakdown(income);
+
+	console.log(output);
+
 	cal = createICS(output.breakdown);
 	var startTime = calc.START_OF_DAY;
 
