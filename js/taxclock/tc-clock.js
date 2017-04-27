@@ -320,6 +320,7 @@ function getInfo(id, place, label, val){
 }
 
 function parsePayment(taxman_fraction){
+  /*
 	var personalTax = parseInt(taxman_fraction * salary);
     $("#iSum").html(formatDollar(personalTax));
     
@@ -327,6 +328,33 @@ function parsePayment(taxman_fraction){
     $("#iDaily").html(daily);
     
     //aday = daily / hourly;
+  */
+
+    //A trial TZ TAX calculation.
+    var personalTax = 0;
+    
+    if(salary <= 170000){
+      personalTax = 0;
+    }
+    else if(salary > 170000 && salary <= 360000){
+      personalTax = (salary - 170000) * 0.09;
+    }
+    else if(salary > 360000 && salary <= 540000){
+      personalTax = 17100 + ((salary - 360000) * 0.20);
+    }
+    else if(salary > 540000 && salary <= 720000){
+      personalTax = 53100 + ((salary - 540000) * 0.25);
+    }
+    else if(salary > 720000){
+      personalTax = 98100 + ((salary - 720000) * 0.30);
+    }
+
+    $("#iSum").html(formatDollar(personalTax));
+    
+    daily = Math.round((personalTax) / 21);
+    $("#iDaily").html(daily);
+
+    //<-- End of trial TZ TAX calculation.
     
     $("#iHours").html(formatHours(taxman_fraction*8));
 }
