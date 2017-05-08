@@ -1,4 +1,5 @@
 // Explanations for items
+/*
 var itemExplanations = {
 	'education' : 'Teachers Service Commission, State Department for Science and Technology, and State Department for Education',
 	'public-healthcare' : 'Ministry of Health',
@@ -15,6 +16,21 @@ var itemExplanations = {
 	'military-and-intelligence-services' : 'National Security matters + agencies. Spies and what not.',
 	'pensions-and-constitutional-office-holder-s-salaries' : 'Civil Servant\'s Pensions, and Salaries for Constitutational Office Holders in Government Departments'
 }
+*/
+
+// Tanzania explanations for items
+var itemExplanations = {
+	'debt-repayment' : 'Education Tax',
+	'transportation' : 'Transportation Tax',
+	'education' : 'Education Tax',
+	'health' : 'Health Tax',
+	'nishati-na-madini' : 'Nishati na Madini Tax',
+	'agriculture,-livestock-and-fisheries' : 'Agriculture, Livestock and Fisheries Tax',
+	'water' : 'Water Tax',
+	'social-security' : 'Social Security Tax',
+	'industries' : 'Industries Tax',
+	'democracy-and-good-governance' : 'Democracy and Good Governance Tax',
+};
 
 var cal = null;
 

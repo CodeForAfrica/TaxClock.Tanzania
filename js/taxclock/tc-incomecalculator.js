@@ -30,6 +30,7 @@ var IncomeCalculator = function() {
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
+  /*
   this.EXPENDITURE = {
     'Education': (339 * Math.pow(10,9)),
     'Public Healthcare': (60.3 * Math.pow(10,9)),
@@ -45,6 +46,21 @@ var IncomeCalculator = function() {
     'Environmental Protection': (92.9  * Math.pow(10,9)),
     'Military and Intelligence Services': (124  * Math.pow(10,9)),
     'Pensions and Constitutional Office Holder\'s Salaries': (60.8  * Math.pow(10,9)),
+  };
+  */
+
+  // Tanzania categorised expenditure.
+  this.EXPENDITURE = {
+    'Debt Repayment' : (8000 *  Math.pow(10,9)),
+    'Transportation' : (5470.3 *  Math.pow(10,9)),
+    'Education' : (4770 *  Math.pow(10,9)),
+    'Health' : (1988.2 *  Math.pow(10,9)),
+    'Nishati na Madini' : (1130 *  Math.pow(10,9)),
+    'Agriculture, Livestosk and Fisheries' : (1560 *  Math.pow(10,9)),
+    'Water' : (1020 *  Math.pow(10,9)),
+    'Social Security' : (387.9 *  Math.pow(10,9)),
+    'Industries' : (81.9 *  Math.pow(10,9)),
+    'Democracy and Good Governance' : (81.9 *  Math.pow(10,9)),
   };
 
   // override ordering
