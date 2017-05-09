@@ -1,7 +1,8 @@
 var IncomeCalculator = function() {
   var self = this;
 
-  this.VAT = 0.16;
+  //this.VAT = 0.16;
+  this.VAT = 0;
 
   function TaxBand(marginalRate, baseAmount, threshold, limit) {
     this.marginalRate = marginalRate;
@@ -11,6 +12,7 @@ var IncomeCalculator = function() {
   }
 
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
+  /*
   this.TAX_TABLE = [
     new TaxBand(0.10, 0, 10165),
     new TaxBand(0.15, 10166, 19741),
@@ -19,12 +21,23 @@ var IncomeCalculator = function() {
     new TaxBand(0.30, 38895, 701300),
 
   ];
+  */
+
+  // Tanzania Tax bands
+  this.TAX_TABLE = [
+    new TaxBand(0.00, 0, 170000),
+    new TaxBand(0.09, 170000, 360000),
+    new TaxBand(0.20, 360000, 540000),
+    new TaxBand(0.25, 540000, 720000),
+    new TaxBand(0.30, 720000, 10000000),
+
+  ];
 
   this.PRIMARY_REBATE = 1162;  //tax relief to be confirmed
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 15.1;
-  this.VAT_REVENUE = 19.4;
+  this.PERSONAL_INCOME_TAX_REVENUE = 29.5;
+  //this.VAT_REVENUE = 19.4;
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
@@ -51,22 +64,22 @@ var IncomeCalculator = function() {
 
   // Tanzania categorised expenditure.
   this.EXPENDITURE = {
-    'Debt Repayment' : (8000 *  Math.pow(10,9)),
-    'Transportation' : (5470.3 *  Math.pow(10,9)),
-    'Education' : (4770 *  Math.pow(10,9)),
-    'Health' : (1988.2 *  Math.pow(10,9)),
-    'Nishati na Madini' : (1130 *  Math.pow(10,9)),
-    'Agriculture, Livestosk and Fisheries' : (1560 *  Math.pow(10,9)),
-    'Water' : (1020 *  Math.pow(10,9)),
-    'Social Security' : (387.9 *  Math.pow(10,9)),
-    'Industries' : (81.9 *  Math.pow(10,9)),
-    'Democracy and Good Governance' : (81.9 *  Math.pow(10,9)),
+    'Debt Repayment' : (8000 *  Math.pow(10,6)),
+    'Transportation' : (5470.3 *  Math.pow(10,6)),
+    'Education' : (4770 *  Math.pow(10,6)),
+    'Health' : (1988.2 *  Math.pow(10,6)),
+    'Nishati na Madini' : (1130 *  Math.pow(10,6)),
+    'Agriculture Livestosk and Fisheries' : (1560 *  Math.pow(10,6)),
+    'Water' : (1020 *  Math.pow(10,6)),
+    'Social Security' : (387.9 *  Math.pow(10,6)),
+    'Industries' : (81.9 *  Math.pow(10,6)),
+    'Democracy and Good Governance' : (81.9 *  Math.pow(10,6)),
   };
 
   // override ordering
   this.ORDERING = {
     'Working for yourself': 9999,
-    'National debt': -1,
+    'Debt Repayment': -1,
   };
 
   // Total budget expenditure
@@ -74,7 +87,7 @@ var IncomeCalculator = function() {
 
   // fraction of budget line items that are funded through
   // personal tax and VAT
-  this.TAXPAYER_RATIO = (this.PERSONAL_INCOME_TAX_REVENUE + this.VAT_REVENUE) / this.CONSOLIDATED_EXPENDITURE;
+  this.TAXPAYER_RATIO = (this.PERSONAL_INCOME_TAX_REVENUE) / this.CONSOLIDATED_EXPENDITURE;
 
   // start of day as a moment.js object. The date is irrelevant.
   this.START_OF_DAY = moment().hour(8).minute(0).second(0);
@@ -91,6 +104,7 @@ var IncomeCalculator = function() {
 
     // income tax
     info.incomeTax = self.incomeTax(info);
+
     // after tax income
     info.netIncome = income - info.incomeTax;
 
@@ -99,6 +113,7 @@ var IncomeCalculator = function() {
 
     // total personal tax
     info.personalTax = info.incomeTax + info.vatTax;
+
     // income after tax and VAT
     info.disposableIncome = income - info.personalTax;
 
@@ -115,7 +130,7 @@ var IncomeCalculator = function() {
 
     // time spent working for myself
     info.breakdown.push(this.workingForSelf(info));
-
+    
     // sort
     info.breakdown = _.sortBy(info.breakdown, function(b) {
       return self.ORDERING[b.name] || -b.fraction;
@@ -128,9 +143,26 @@ var IncomeCalculator = function() {
   };
 
   this.incomeTax = function(info) {
-   
+    var gross_income_tax = 0
 
-    return gross_income_tax = info.income * 0.5;
+    // Tanzania Tax calculation formula
+    if(info.income <= 170000){
+      gross_income_tax = 0;
+    }
+    else if(info.income > 170000 && info.income <= 360000){
+      gross_income_tax = (info.income - 170000) * 0.09;
+    }
+    else if(info.income > 360000 && info.income <= 540000){
+      gross_income_tax = 17100 + ((info.income - 360000) * 0.20);
+    }
+    else if(info.income > 540000 && info.income <= 720000){
+      gross_income_tax = 53100 + ((info.income - 540000) * 0.25);
+    }
+    else if(info.income > 720000){
+      gross_income_tax = 98100 + ((info.income - 720000) * 0.30);
+    }
+
+    return gross_income_tax;
   };
 
   this.vatTax = function(info) {

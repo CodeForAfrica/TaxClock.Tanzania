@@ -25,7 +25,7 @@ var itemExplanations = {
 	'education' : 'Education Tax',
 	'health' : 'Health Tax',
 	'nishati-na-madini' : 'Nishati na Madini Tax',
-	'agriculture,-livestock-and-fisheries' : 'Agriculture, Livestock and Fisheries Tax',
+	'agriculture-livestock-and-fisheries' : 'Agriculture, Livestock and Fisheries Tax',
 	'water' : 'Water Tax',
 	'social-security' : 'Social Security Tax',
 	'industries' : 'Industries Tax',
