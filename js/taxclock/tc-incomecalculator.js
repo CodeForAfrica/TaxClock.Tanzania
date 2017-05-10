@@ -36,7 +36,7 @@ var IncomeCalculator = function() {
   this.PRIMARY_REBATE = 1162;  //tax relief to be confirmed
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 29.5;
+  this.PERSONAL_INCOME_TAX_REVENUE = 29539.6;
   //this.VAT_REVENUE = 19.4;
 
   // Budget expenditure by category, in millions
@@ -61,19 +61,19 @@ var IncomeCalculator = function() {
     'Pensions and Constitutional Office Holder\'s Salaries': (60.8  * Math.pow(10,9)),
   };
   */
-
+  
   // Tanzania categorised expenditure.
   this.EXPENDITURE = {
-    'Debt Repayment' : (8000 *  Math.pow(10,6)),
-    'Transportation' : (5470.3 *  Math.pow(10,6)),
-    'Education' : (4770 *  Math.pow(10,6)),
-    'Health' : (1988.2 *  Math.pow(10,6)),
-    'Nishati na Madini' : (1130 *  Math.pow(10,6)),
-    'Agriculture Livestosk and Fisheries' : (1560 *  Math.pow(10,6)),
-    'Water' : (1020 *  Math.pow(10,6)),
-    'Social Security' : (387.9 *  Math.pow(10,6)),
-    'Industries' : (81.9 *  Math.pow(10,6)),
-    'Democracy and Good Governance' : (81.9 *  Math.pow(10,6)),
+    'Debt Repayment' : (8000 *  Math.pow(10,9)),
+    'Transportation' : (5470.3 *  Math.pow(10,9)),
+    'Education' : (4770 *  Math.pow(10,9)),
+    'Health' : (1988.2 *  Math.pow(10,9)),
+    'Nishati na Madini' : (1130 *  Math.pow(10,9)),
+    'Agriculture Livestosk and Fisheries' : (1560 *  Math.pow(10,9)),
+    'Water' : (1020 *  Math.pow(10,9)),
+    'Social Security' : (387.9 *  Math.pow(10,9)),
+    'Industries' : (81.9 *  Math.pow(10,9)),
+    'Democracy and Good Governance' : (81.9 *  Math.pow(10,9)),
   };
 
   // override ordering
