@@ -301,10 +301,33 @@ footer {
 
 @media (min-width: 992px) {
   #clock-area {
-    padding-top: 65px;
+    padding-top: 0px;
   }
   #clock-area, #schedule-area {
     float: right;
   }
 
 }
+
+
+/* -- Language Translation Styles -- */
+.negative65-top-margin{
+  margin-top: -65px;
+}
+
+.language-switcher{
+  height: 65px;
+}
+
+.language-switcher-btns{
+  background: #fff;
+  padding: 15px;
+  color: #666;
+  border: 1px solid #dedede;
+  border-top: none;
+}
+
+.language-switcher-btns span{
+  font-size: 13px;
+}
+
