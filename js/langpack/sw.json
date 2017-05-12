@@ -1,0 +1,11 @@
+{
+	"token": {
+		"If your salary is": "Kama mshahara wako ni",
+		"a month": "kwa mwezi",
+		"it means you earn": "inamaanisha unaingiza",
+		"per": "kwa",
+		"hour": "saa"
+	},
+	"regex": [
+	]
+}

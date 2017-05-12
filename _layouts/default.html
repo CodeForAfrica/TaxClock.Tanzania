@@ -133,6 +133,20 @@
   <script src="js/vendor/dvc.ajax.js"></script>
   <script src="js/taxclock/tc-clock.js"></script>
 
+  <!-- Language Translator Scripts -->
+  <script src="js/js.cookie.js"></script>
+	<script src="js/jquery-lang.js"></script>
+
+  <script type="text/javascript">
+		var lang = new Lang();
+		lang.dynamic('sw', 'js/langpack/sw.json');
+		lang.init({
+			defaultLang: 'en'
+		});
+
+    console.log(lang);
+	</script>
+
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
     ( function(b, o, i, l, e, r) {
