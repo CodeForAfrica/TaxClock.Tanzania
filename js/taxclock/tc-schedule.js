@@ -1,23 +1,3 @@
-// Explanations for items
-/*
-var itemExplanations = {
-	'education' : 'Teachers Service Commission, State Department for Science and Technology, and State Department for Education',
-	'public-healthcare' : 'Ministry of Health',
-	'law-and-order' : 'Judiciary, State Department for Interior, IEBC, Attorney General & Dept of Justice, Ethics & Anti-Corruption Commission, Director of Public Prosecutions, Office of the Registrar of Political Parties, KNCHR, National Gender & Equality Commission, National Police Service Commission, Independent Policing Oversight Authority, and Witness Protection Agency',
-	'debt-repayment' : 'Public Debt Repayment that consists of internal debt and external debt borrowed from foreign lenders including commercial banks, governments or international financial institutions',
-	'agriculture-and-rural-development' : 'Ministry of Land Housing and Urban Development, State Department for Agriculture, State Department for Livestock, State Department for Fisheries, and National Land Commission',
-	'lights-and-power' : 'Ministry of Energy and Petroleum',
-	'public-infrastructure' : 'State Department of Infrastructure and Ministry Information Communication and Technology',
-	'transport-infrastructure' : 'State Department of Transport',
-	'trade-and-commerce' : 'Ministry of Industrialization and Enterprise Development, State Department for Commerce and Tourism, and State Department for East African Affairs',
-	'running-government' : 'The National Treasury, State Department for Planning, Ministry of Foreign Affairs and International Trade, State Department for Devolution, The Presidency, Auditor General, Public Service Commission, Controller of Budget, Salaries and Remuneration Commission, The Commission on Administrative of Justice, The Commission on Revenue Allocation, Parliament, CDF, Contingencies',
-	'social-protection' : 'Ministry of Labour Social Security and Services, and Ministry of Sports Culture and Arts',
-	'environmental-protection' : 'Ministry of Water and Irrigation, Ministry of Environment, Natural Resources & RDAs, and Ministry of Mining',
-	'military-and-intelligence-services' : 'National Security matters + agencies. Spies and what not.',
-	'pensions-and-constitutional-office-holder-s-salaries' : 'Civil Servant\'s Pensions, and Salaries for Constitutational Office Holders in Government Departments'
-}
-*/
-
 // Tanzania explanations for items
 var itemExplanations = {
 	'debt-repayment' : 'Education Tax',
@@ -30,6 +10,16 @@ var itemExplanations = {
 	'social-security' : 'Social Security Tax',
 	'industries' : 'Industries Tax',
 	'democracy-and-good-governance' : 'Democracy and Good Governance Tax',
+	'kulipa-deni' : 'Kulipa Deni la Nchi',
+	'usafiri' : 'Kodi ya Usafiri',
+	'elimu' : 'Kodi ya Elimu',
+	'afya' : 'Kodi ya Afya',
+	'nishati-na-madini' : 'Kodi ya Nishati na Madini',
+	'kilimo-ufugaji-na-uvuvi' : 'Kodi ya Kilimo Ufugaji na Uvuvi',
+	'maji' : 'Kodi ya Maji',
+	'ruzuku-ya-serikali' : 'Kodi ya Ruzuku ya Serikali',
+	'viwanda' : 'Kodi ya Viwanda',
+	'demokrasia-na-utawala-bora' : 'Kodi ya Demokrasia na Utawala Bora',
 };
 
 var cal = null;
@@ -127,6 +117,7 @@ function incomeChange() {
 	var calc = new IncomeCalculator();
 
 	output = calc.calculateIncomeBreakdown(income);
+	var currentLang = output.currentLang;
 
 	console.log(output);
 
@@ -176,27 +167,62 @@ function incomeChange() {
 				var secondsString = "";
 
 				if (hours > 0) {
-					var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
+					var hoursString = '';
+					if(currentLang == "sw"){
+						hoursString = '<span class="item-hours"> Masaa ' + hours + '</span>';
+					}
+					else{
+						hoursString = '<span class="item-hours">' + hours + ' hours </span>';
+					}
 				}
 
 				if (hours == 1) {
-					var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
+					var hoursString = '';
+					if(currentLang == "sw"){
+						hoursString = '<span class="item-hours"> Saa ' + hours + '</span>';
+					}
+					else{
+						hoursString = '<span class="item-hours">' + hours + ' hour </span>';
+					}
 				}
 
 				if (minutes > 0) {
-					var minutesString = '<span class="item-minutes">' + minutes + ' minutes </span>';
+					var minutesString = '';
+					if(currentLang == "sw"){
+						minutesString = '<span class="item-minutes"> Dakika ' + minutes + '</span>';
+					}
+					else{
+						minutesString = '<span class="item-minutes">' + minutes + ' minutes </span>';
+					}
 				}
 
 				if (minutes == 1) {
-					var minutesString = '<span class="item-minutes">' + minutes + ' minute </span>';
+					if(currentLang == "sw"){
+						minutesString = '<span class="item-minutes"> Dakika ' + minutes + '</span>';
+					}
+					else{
+						minutesString = '<span class="item-minutes">' + minutes + ' minute </span>';
+					}
 				}
 
 				if (seconds > 0) {
-					var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
+					var secondsString = '';
+					if(currentLang == "sw"){
+						secondsString = '<span class="item-seconds"> Sekunde ' + seconds + '</span>';
+					}
+					else{
+						secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
+					}
 				}
 
 				if (seconds == 1) {
-					var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
+					var secondsString = '';
+					if(currentLang == "sw"){
+						secondsString = '<span class="item-seconds"> Sekunde ' + seconds + '</span>';
+					}
+					else{
+						secondsString = '<span class="item-seconds">' + seconds + ' second </span>';
+					}
 				}
 
 				var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';
@@ -218,7 +244,25 @@ function incomeChange() {
 			});
 		});
 
-		$('#output-dayplanner').prepend('<div class="item" id="start"><strong>8am</strong> - START OF THE WORK DAY</div>').append('<div class="item" id="end"><strong>5pm</strong> - END OF THE WORK DAY</div>');
+		// Dayplanner words translation
+		if(currentLang == "sw"){
+			var start_of_the_work_day_str = "MWANZO WA SIKU YA KAZI";
+			var end_of_the_work_day_str = "MWISHO WA SIKU YA KAZI";
+			var end_of_the_work_day_str_capitalized = "Mwisho wa siku ya kazi";
+			var time_now = "Muda Sasa";
+			var put_your_feet_up = "Weka miguu yako juu, ulikuwa na siku ndefu ya kufanya kazi na kuichangia serikali.";
+			var brace_yourself = "Jipe moyo mwenyewe, una siku ndefu mbele yako.";
+		}
+		else{
+			var start_of_the_work_day_str = "START OF THE WORK DAY";
+			var end_of_the_work_day_str = "END OF THE WORK DAY";
+			var end_of_the_work_day_str_capitalized = "End of the work day";
+			var time_now = "Time Now";
+			var put_your_feet_up = "Put your feet up, you’ve had a long day working and contributing to the state.";
+			var brace_yourself = "Brace yourself, you have a long day ahead of you.";
+		}
+
+		$('#output-dayplanner').prepend('<div class="item" id="start"><strong>8am</strong> - '+ start_of_the_work_day_str +'</div>').append('<div class="item" id="end"><strong>5pm</strong> - '+ end_of_the_work_day_str +'</div>');
 
 		/* update clock */
 		function tick() {
@@ -250,7 +294,7 @@ function incomeChange() {
 					elementHeight = $(this).height() - 12;
 					topPosition = Math.round((nowSeconds - startSeconds) / (finishSeconds - startSeconds) * elementHeight) + 12;
 					$('#now-line').remove();
-					$(this).prepend('<div id="now-line" title="' + now.format('hh:mm a') + '" style="top: ' + topPosition + 'px;"><span>Time Now</span></div>');
+					$(this).prepend('<div id="now-line" title="' + now.format('hh:mm a') + '" style="top: ' + topPosition + 'px;"><span>'+ time_now +'</span></div>');
 				}
 
 			});
@@ -263,16 +307,16 @@ function incomeChange() {
 				$('#clock-item').show().text(pair[0].name);
 			} else {
 				$('#clock-next-wrapper, #working-on').hide();
-				$('#clock-item').text('Put your feet up, you’ve had a long day working and contributing to the state.');
+				$('#clock-item').text(put_your_feet_up);
 				// show morning message (after 4 am)
 
 				var nowHour = parseInt(now.format('H'));
 				if (nowHour >= 4 && nowHour < 9) {
-					$('#clock-item').text('Brace yourself, you have a long day ahead of you.');
+					$('#clock-item').text(brace_yourself);
 				}
 			}
 
-			$('#clock-next').text(pair[1] ? pair[1].name : 'End of the workday');
+			$('#clock-next').text(pair[1] ? pair[1].name : end_of_the_work_day_str_capitalized);
 
 			TC.colors.setSchedule();
 		};

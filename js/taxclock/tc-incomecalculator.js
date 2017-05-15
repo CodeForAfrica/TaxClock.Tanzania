@@ -11,18 +11,6 @@ var IncomeCalculator = function() {
     this.limit = (arguments.length > 3) ? this.limit = limit : this.limit = Number.POSITIVE_INFINITY;
   }
 
-  // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
-  /*
-  this.TAX_TABLE = [
-    new TaxBand(0.10, 0, 10165),
-    new TaxBand(0.15, 10166, 19741),
-    new TaxBand(0.20, 19742, 29317),
-    new TaxBand(0.25, 29318, 38893),
-    new TaxBand(0.30, 38895, 701300),
-
-  ];
-  */
-
   // Tanzania Tax bands
   this.TAX_TABLE = [
     new TaxBand(0.00, 0, 170000),
@@ -43,44 +31,48 @@ var IncomeCalculator = function() {
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
-  /*
-  this.EXPENDITURE = {
-    'Education': (339 * Math.pow(10,9)),
-    'Public Healthcare': (60.3 * Math.pow(10,9)),
-    'Law and Order': (188 * Math.pow(10,9)),
-    'Debt Repayment': (466.5 * Math.pow(10,9)),
-    'Agriculture and Rural Development': (69.6 * Math.pow(10,9)),
-    'Lights and Power': (122.3 * Math.pow(10,9)),
-    'Public Infrastructure': (202 * Math.pow(10,9)),
-    'Transport Infrastructure': (181.6 * Math.pow(10,9)),
-    'Trade and Commerce': (20.9 * Math.pow(10,9)),
-    'Running Government': (232 * Math.pow(10,9)),
-    'Social Protection': (33.7 * Math.pow(10,9)),
-    'Environmental Protection': (92.9  * Math.pow(10,9)),
-    'Military and Intelligence Services': (124  * Math.pow(10,9)),
-    'Pensions and Constitutional Office Holder\'s Salaries': (60.8  * Math.pow(10,9)),
-  };
-  */
   
   // Tanzania categorised expenditure.
-  this.EXPENDITURE = {
-    'Debt Repayment' : (8000 *  Math.pow(10,9)),
-    'Transportation' : (5470.3 *  Math.pow(10,9)),
-    'Education' : (4770 *  Math.pow(10,9)),
-    'Health' : (1988.2 *  Math.pow(10,9)),
-    'Nishati na Madini' : (1130 *  Math.pow(10,9)),
-    'Agriculture Livestosk and Fisheries' : (1560 *  Math.pow(10,9)),
-    'Water' : (1020 *  Math.pow(10,9)),
-    'Social Security' : (387.9 *  Math.pow(10,9)),
-    'Industries' : (81.9 *  Math.pow(10,9)),
-    'Democracy and Good Governance' : (81.9 *  Math.pow(10,9)),
-  };
+   if(lang.currentLang == "sw"){
+    this.EXPENDITURE = {
+      'Kulipa Deni' : (8000 *  Math.pow(10,9)),
+      'Usafiri' : (5470.3 *  Math.pow(10,9)),
+      'Elimu' : (4770 *  Math.pow(10,9)),
+      'Afya' : (1988.2 *  Math.pow(10,9)),
+      'Nishati na Madini' : (1130 *  Math.pow(10,9)),
+      'Kilimo Ufugaji na Uvuvi' : (1560 *  Math.pow(10,9)),
+      'Maji' : (1020 *  Math.pow(10,9)),
+      'Ruzuku ya Serikali' : (387.9 *  Math.pow(10,9)),
+      'Viwanda' : (81.9 *  Math.pow(10,9)),
+      'Demokrasia na Utawala Bora' : (81.9 *  Math.pow(10,9)),
+    };
 
-  // override ordering
-  this.ORDERING = {
-    'Working for yourself': 9999,
-    'Debt Repayment': -1,
-  };
+    // override ordering
+    this.ORDERING = {
+      'Kazi Kwa Ajili Yako Mwenyewe': 9999,
+      'Kulipa Deni': -1,
+    };
+  }
+  else{
+    this.EXPENDITURE = {
+      'Debt Repayment' : (8000 *  Math.pow(10,9)),
+      'Transportation' : (5470.3 *  Math.pow(10,9)),
+      'Education' : (4770 *  Math.pow(10,9)),
+      'Health' : (1988.2 *  Math.pow(10,9)),
+      'Energy and Minerals' : (1130 *  Math.pow(10,9)),
+      'Agriculture Livestosk and Fisheries' : (1560 *  Math.pow(10,9)),
+      'Water' : (1020 *  Math.pow(10,9)),
+      'Social Security' : (387.9 *  Math.pow(10,9)),
+      'Industries' : (81.9 *  Math.pow(10,9)),
+      'Democracy and Good Governance' : (81.9 *  Math.pow(10,9)),
+    };
+
+    // override ordering
+    this.ORDERING = {
+      'Working for yourself': 9999,
+      'Debt Repayment': -1,
+    };
+  }
 
   // Total budget expenditure
   this.CONSOLIDATED_EXPENDITURE = _.reduce(_.values(this.EXPENDITURE), function(t, n) { return t + n; }, 0);
@@ -101,6 +93,7 @@ var IncomeCalculator = function() {
     var info = {};
 
     info.income = income;
+    info.currentLang = lang.currentLang;
 
     // income tax
     info.incomeTax = self.incomeTax(info);
@@ -171,7 +164,7 @@ var IncomeCalculator = function() {
 
   this.workingForSelf = function(info) {
     return {
-      name: 'Working for yourself',
+      name: lang.currentLang == "sw" ? "Kazi Kwa Ajili Yako Mwenyewe" : "Working for yourself",
       amount: info.income,
       taxpayer_amount: info.disposableIncome,
       fraction: info.personal_fraction,
