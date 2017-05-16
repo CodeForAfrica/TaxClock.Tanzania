@@ -12,6 +12,9 @@ var state = 0;
 var wheight = 600;
 var divisor = 10;
 
+// Clock Translation variables definition.
+var tanzania_government = "";
+
 jQuery(document).ready(function($) {
   // wheight = parseInt($(window).height()) - 230;
   // wwidth = parseInt($(window).width()) - 20;
@@ -28,6 +31,15 @@ jQuery(document).ready(function($) {
   // if (wheight > wwidth) {
   //   wheight = wwidth;
   // }
+
+  // Clock Translation variables assignment.
+  if(lang.currentLang == "sw"){
+    tanzania_government = "Serikali ya Tanzania";
+  }
+  else{
+    tanzania_government = "Tanzania Government";
+  }
+
   wheight = parseInt($('#clock-area').width());
   
   canvas = Raphael("canvas", wheight, wheight);
@@ -248,7 +260,7 @@ function analyzeData(data, income){
      // var daily = Math.round(taxman_fraction * 21 * 8);
       var aday = taxman_fraction * 8;
 
-      clocked.writeto("Tanzania Government",formatHoursFlat(aday));
+      clocked.writeto(tanzania_government,formatHoursFlat(aday));
       
 }
 
@@ -340,15 +352,15 @@ function formatHours(val) {
    	 num -= parseInt(num); num *= 60;
   var secs = parseInt(num);
   
-  
+  // Output Time with translation also.
   if(hours == 1){
-    str = "<span class='num'>"+hours+"</span> hour ";
+    str = lang.currentLang == "sw" ? "Saa <span class='num'>"+hours+"</span> " : "<span class='num'>"+hours+"</span> hour ";
   }else if(hours > 1){
-    str = "<span class='num'>"+hours+"</span> hours ";
+    str = lang.currentLang == "sw" ? "Masaa <span class='num'>"+hours+"</span> " : "<span class='num'>"+hours+"</span> hours ";
   }
   
   if(mins >= 1 && hours > 0){
-    str += '<span style="font-weight: normal;">and</span> ';
+    str += lang.currentLang == "sw" ? '<span style="font-weight: normal;">na</span> ': '<span style="font-weight: normal;">and</span> ';
   }
   
   //if(mins < 1){
@@ -363,18 +375,19 @@ function formatHours(val) {
   }
   
   if(mins == 1){
-    str += "<span class='num'>"+mins+"</span> minute ";
+    str += lang.currentLang == "sw" ? "Dakika <span class='num'>"+mins+"</span> " : "<span class='num'>"+mins+"</span> minute ";
   }else if(mins > 1){
-    str += "<span class='num'>"+mins+"</span> minutes ";
+    str += lang.currentLang == "sw" ? "Dakika <span class='num'>"+mins+"</span> " : "<span class='num'>"+mins+"</span> minutes ";
   }
   
   if(secs){
-    str += "<span class='num'>"+secs+"</span> seconds";
+    str += lang.currentLang == "sw" ? "Sekunde <span class='num'>"+secs+"</span> " : "<span class='num'>"+secs+"</span> seconds";
   }  
   return str
 }
 
 function formatHoursFlat(val) {
+  // str is translated also.
   num = val;
   str = "";
   
@@ -403,12 +416,12 @@ function formatHoursFlat(val) {
   //}
 
   if(days){
-    str += days+" days, ";
+    str += lang.currentLang == "sw" ? "Siku "+days+", " : days+" days, ";
   }
   if(hours == 1){
-    str +=  hours+" hour ";
+    str +=  lang.currentLang == "sw" ? "Saa "+hours+" " : hours+" hour ";
   }else if(hours > 1){
-    str +=  hours+" hours ";
+    str +=  lang.currentLang == "sw" ? "Masaa "+hours+" " : hours+" hours ";
   }
   
   if(mins > 0 && secs > 30){
@@ -419,17 +432,17 @@ function formatHoursFlat(val) {
   }
   
   if(mins >= 1 && hours > 0){
-    str += "and ";
+    str += lang.currentLang == "sw" ? "na " : "and ";
   }
   
   if(mins == 1){
-    str += mins+" minute";
+    str += lang.currentLang ==  "sw" ? "Dakika "+mins : mins+" minute";
   }else if(mins > 1){
-    str += mins+" minutes";
+    str += lang.currentLang ==  "sw" ? "Dakika "+mins : mins+" minutes";
   }
   
   if(secs){
-    str += secs+" seconds";
+    str += lang.currentLang == "sw" ? "Sekunde "+secs : secs+" seconds";
   }
      
   return str

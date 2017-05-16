@@ -103,6 +103,20 @@
   {% endif %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Language Translator Scripts -->
+  <script src="js/js.cookie.js" charset="utf-8" type="text/javascript"></script>
+	<script src="js/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+	<script src="js/langpack/sw.js" charset="utf-8" type="text/javascript"></script>
+
+  <script type="text/javascript">
+		var lang = new Lang();
+	  
+		lang.init({
+			defaultLang: 'en'
+		});
+	</script>
+  
   <script>
     window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.4.min.js"><\/script>')
   </script>
@@ -132,21 +146,6 @@
   <script src="js/clock.js"></script>
   <script src="js/vendor/dvc.ajax.js"></script>
   <script src="js/taxclock/tc-clock.js"></script>
-
-  <!-- Language Translator Scripts -->
-  <script src="js/js.cookie.js" charset="utf-8" type="text/javascript"></script>
-	<script src="js/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
-	<script src="js/langpack/sw.js" charset="utf-8" type="text/javascript"></script>
-
-  <script type="text/javascript">
-		var lang = new Lang();
-	  
-		lang.init({
-			defaultLang: 'en'
-		});
-
-    console.log(lang);
-	</script>
 	
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>

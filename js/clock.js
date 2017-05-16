@@ -1,4 +1,18 @@
 Raphael.fn.clock = function (cx, cy, rad) {
+    // Clock translation variables.
+    if(lang.currentLang == "sw"){
+      var time_spent_working_for = "Muda unaotumika kufanya kazi kwa";
+      var tanzania_government = "Serikali ya Tanzania";
+      var hover_over_slice = "Ambaa Juu Ya Kipande Chochote Cha Rangi Kwa Taarifa Zaidi";
+      var today_working_for = "leo kufanya kazi kwa";
+    }
+    else{
+      var time_spent_working_for = "Time spent working for";
+      var tanzania_government = "Tanzania Government";
+      var hover_over_slice = "Hover Over Any Color Slice For More Info";
+      var today_working_for = "today working for";
+    }
+    
     var paper = this,
         chart = this.set(),
         handHour,
@@ -119,9 +133,9 @@ Raphael.fn.clock = function (cx, cy, rad) {
       //paper.image("images/salary.png", cx-38,(cy-(rad-143)), 75, 19),
       //paper.image("images/hourly.png", cx+80,(cy-(rad-189)), 39, 19),
 
-      chart.spent = paper.text(cx, (cy+(rad-(fontSizer*11.5))), "Time spent working for").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"}),
-      workingFor = paper.text(cx, (cy+(rad-(fontSizer*9.8))), "Tanzania Government").attr({"font-family": "Poppins", 'font-size': (fontSizer+6)+"px", "font-style":"italic", fill:"#fff"}),
-      clickHere = paper.text(cx, (cy+(rad-(fontSizer*8))), "Hover Over Any Color Slice For More Info").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"})
+      chart.spent = paper.text(cx, (cy+(rad-(fontSizer*11.5))), time_spent_working_for).attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"}),
+      workingFor = paper.text(cx, (cy+(rad-(fontSizer*9.8))), tanzania_government).attr({"font-family": "Poppins", 'font-size': (fontSizer+6)+"px", "font-style":"italic", fill:"#fff"}),
+      clickHere = paper.text(cx, (cy+(rad-(fontSizer*8))), hover_over_slice).attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"})
 
     );
     sec = (cy-(rad-20));
@@ -142,7 +156,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
     
     chart.writeto = function (text, time, link) {
       workingFor.attr('text', text);
-      this.spent.attr('text', time+" today working for");
+      this.spent.attr('text', time+" "+today_working_for);
       //clickHere.attr('text', link)
     }
           
