@@ -114,6 +114,16 @@ var output;
 
 function incomeChange() {
 	var income = parseFloat($('input[name="income"]').val());
+
+	console.log(income);
+	// Checking if income is below TZS 170001
+	if(isNaN(income) || (income < 170001)){
+		$('.tax-div').css('border-color','#ED1C24');
+	}
+	else{
+		$('.tax-div').css('border-color','#fff');
+	}
+
 	var calc = new IncomeCalculator();
 
 	output = calc.calculateIncomeBreakdown(income);
