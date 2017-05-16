@@ -34,6 +34,20 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	
+
+		<script src="js/jquery-lang.js"></script>
+
+  <script type="text/javascript">
+		var lang = new Lang();
+		lang.dynamic('sw', 'js/langpack/sw.json');
+		lang.init({
+			defaultLang: 'en'
+		});
+
+    console.log(lang);
+	</script>
+	
 </head>
 <body>
   <!--[if lt IE 8]>
@@ -135,17 +149,7 @@
 
   <!-- Language Translator Scripts -->
   <script src="js/js.cookie.js"></script>
-	<script src="js/jquery-lang.js"></script>
 
-  <script type="text/javascript">
-		var lang = new Lang();
-		lang.dynamic('sw', 'js/langpack/sw.json');
-		lang.init({
-			defaultLang: 'en'
-		});
-
-    console.log(lang);
-	</script>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
