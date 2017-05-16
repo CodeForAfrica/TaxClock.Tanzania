@@ -12,7 +12,7 @@ $(window).on('load', function() {
 	    $('input[name="income"]').val(new_salary);
 	
     } else {
-	    $('input[name="income"]').val(100000);
+	    $('input[name="income"]').val(200000);
     }
 
     incomeChange();
