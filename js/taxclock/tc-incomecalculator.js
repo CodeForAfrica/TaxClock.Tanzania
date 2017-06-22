@@ -24,7 +24,7 @@ var IncomeCalculator = function() {
   this.PRIMARY_REBATE = 1162;  //tax relief to be confirmed
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 29539.6;
+  this.PERSONAL_INCOME_TAX_REVENUE = 31712;
   //this.VAT_REVENUE = 19.4;
 
   // Budget expenditure by category, in millions
@@ -35,42 +35,58 @@ var IncomeCalculator = function() {
   // Tanzania categorised expenditure.
    if(lang.currentLang == "sw"){
     this.EXPENDITURE = {
-      'Kulipa Deni' : (8000 *  Math.pow(10,9)),
-      'Usafiri' : (5470.3 *  Math.pow(10,9)),
-      'Elimu' : (4770 *  Math.pow(10,9)),
-      'Afya' : (1988.2 *  Math.pow(10,9)),
-      'Nishati na Madini' : (1130 *  Math.pow(10,9)),
-      'Kilimo Ufugaji na Uvuvi' : (1560 *  Math.pow(10,9)),
-      'Maji' : (1020 *  Math.pow(10,9)),
-      'Ruzuku ya Serikali' : (387.9 *  Math.pow(10,9)),
-      'Viwanda' : (81.9 *  Math.pow(10,9)),
-      'Demokrasia na Utawala Bora' : (81.9 *  Math.pow(10,9)),
+      'Fedha' : (11752.2 *  Math.pow(10,9)),
+      'TAMISEMI' : (6578.6 *  Math.pow(10,9)),
+      'Usafiri na Habari' : (4516.9 *  Math.pow(10,9)),
+      'Jeshi' : (1725.5 *  Math.pow(10,9)),
+      'Elimu' : (1366.7 *  Math.pow(10,9)),
+      'Afya' : (1115.6 *  Math.pow(10,9)),
+      'Nishati na Madini': (998.3 *  Math.pow(10,9)),
+      'Mambo ya Ndani' : (930.4 *  Math.pow(10,9)),
+      'Demokrasia na Utawala Bora' : (821.3 *  Math.pow(10,9)),
+      'Maji' : (672.2 *  Math.pow(10,9)),
+      'Kilimo Ufugaji na Uvuvi' : (267.9 *  Math.pow(10,9)),
+      'Ofisi ya Waziri Mkuu' : (171.7 *  Math.pow(10,9)),
+      'Utalii' : (148.6 *  Math.pow(10,9)),
+      'Viwanda na Biashara' : (122.2 *  Math.pow(10,9)),
+      'Bunge' : (121.7 *  Math.pow(10,9)),
+      'Ardhi' : (70.8 *  Math.pow(10,9)),
+      'Michezo' : (28.2 *  Math.pow(10,9)),
+      'Ofisi ya Makamu wa Raisi' : (15 *  Math.pow(10,9))
+      //'Makamu wa Raisi' : (4.9 *  Math.pow(10,9))
     };
 
     // override ordering
     this.ORDERING = {
-      'Kazi Kwa Ajili Yako Mwenyewe': 9999,
-      'Kulipa Deni': -1,
+      'Kazi Kwa Ajili Yako Mwenyewe': 9999
     };
   }
   else{
     this.EXPENDITURE = {
-      'Debt Repayment' : (8000 *  Math.pow(10,9)),
-      'Transportation' : (5470.3 *  Math.pow(10,9)),
-      'Education' : (4770 *  Math.pow(10,9)),
-      'Health' : (1988.2 *  Math.pow(10,9)),
-      'Energy and Minerals' : (1130 *  Math.pow(10,9)),
-      'Agriculture Livestosk and Fisheries' : (1560 *  Math.pow(10,9)),
-      'Water' : (1020 *  Math.pow(10,9)),
-      'Social Security' : (387.9 *  Math.pow(10,9)),
-      'Industries' : (81.9 *  Math.pow(10,9)),
-      'Democracy and Good Governance' : (81.9 *  Math.pow(10,9)),
+      'Finance' : (11752.2 *  Math.pow(10,9)),
+      'TAMISEMI' : (6578.6 *  Math.pow(10,9)),
+      'Transport and Communication' : (4516.9 *  Math.pow(10,9)),
+      'Army' : (1725.5 *  Math.pow(10,9)),
+      'Education' : (1366.7 *  Math.pow(10,9)),
+      'Health' : (1115.6 *  Math.pow(10,9)),
+      'Energy and Minerals': (998.3 *  Math.pow(10,9)),
+      'Internal Affairs' : (930.4 *  Math.pow(10,9)),
+      'Democracy and Good Governance' : (821.3 *  Math.pow(10,9)),
+      'Water' : (672.2 *  Math.pow(10,9)),
+      'Agriculture Livestosk and Fisheries' : (267.9 *  Math.pow(10,9)),
+      'Prime Minister Office' : (171.7 *  Math.pow(10,9)),
+      'Tourism' : (148.6 *  Math.pow(10,9)),
+      'Industries and Business' : (122.2 *  Math.pow(10,9)),
+      'Parliament' : (121.7 *  Math.pow(10,9)),
+      'Lands' : (70.8 *  Math.pow(10,9)),
+      'Sports' : (28.2 *  Math.pow(10,9)),
+      'Vice President Office' : (15 *  Math.pow(10,9))
+      //'Vice President' : (4.9 *  Math.pow(10,9))
     };
 
     // override ordering
     this.ORDERING = {
-      'Working for yourself': 9999,
-      'Debt Repayment': -1,
+      'Working for yourself': 9999
     };
   }
 
