@@ -232,13 +232,14 @@ function analyzeData(data, income){
             taxman_fraction += fraction;
           }
           
+          /*
           if (fraction > 0) {
             
-            items.push(fraction);
-            labels.push(name);
-            ids.push(id);
-            
-          }
+          }*/
+
+          items.push(fraction);
+          labels.push(name);
+          ids.push(id);
       });
       
 
